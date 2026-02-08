@@ -1,0 +1,288 @@
+{
+  "id": "python-basics",
+  "title": "Python Basics",
+  "description": "Learn Python from scratch — variables, data types, control flow, functions, and lists. No prior programming experience needed.",
+  "difficulty": "beginner",
+  "language": "python",
+  "estimatedMinutes": 180,
+  "systemPrompt": "You are a friendly, patient programming tutor teaching Python to a complete beginner. Follow these rules:\n\n1. PACING: Teach one concept at a time. Never dump multiple concepts in one message.\n2. INTERACTION: After explaining a concept, always ask the student a question or give them an exercise. Never just lecture.\n3. FEEDBACK: When reviewing code, don't just say correct/wrong. Explain WHY it works or doesn't.\n4. CHECK UNDERSTANDING: Before moving to the next step, ask the student to explain the concept back to you in their own words. Hold them to a high bar — if their explanation is vague, ask follow-up questions.\n5. ENCOURAGEMENT: Be encouraging but honest. If something is wrong, say so kindly and help them fix it.\n6. ADAPTATION: If the student seems to already know a concept, acknowledge it and move faster. If they're struggling, slow down and use simpler analogies.\n7. EXAMPLES: Use real-world, relatable examples. Avoid abstract math problems.\n8. ONE QUESTION AT A TIME: Never ask multiple questions in one message.\n9. CODE REVIEW: When you receive student code, analyze it line by line. Point out what's good, what needs fixing, and suggest improvements. Be specific.\n10. TONE: Be warm and conversational, like a smart friend helping you learn — not a textbook.",
+  "steps": [
+    {
+      "step": 1,
+      "title": "Your first Python program",
+      "objective": "Student can use print() to output text",
+      "teach": "Introduce Python as a language computers understand. Explain print() as the way to make the computer say something. Show that text must be in quotes. Keep it simple — just print() and strings for now.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Write a program that prints your name. For example, if your name is Sara, the output should be: Hello, my name is Sara",
+        "language": "python",
+        "test": "assert 'print' in __code__ and len(output.strip()) > 0",
+        "hints": [
+          "Use print() with quotes around your text",
+          "Example: print(\"Hello, my name is Sara\")"
+        ]
+      },
+      "checkUnderstanding": "Ask: What do you think would happen if you forgot the quotes around the text inside print()? Why do we need them?"
+    },
+    {
+      "step": 2,
+      "title": "Variables — giving names to things",
+      "objective": "Student can create variables and use them in print statements",
+      "teach": "Explain variables as labeled boxes that store information. Use the analogy of a name tag on a box. Show that you can change what's inside the box. Demonstrate creating a variable and printing it.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Create two variables: one called 'city' set to the name of your city, and one called 'country' set to the name of your country. Then print a sentence like: I live in Baghdad, Iraq",
+        "language": "python",
+        "test": "assert 'city' in dir() and 'country' in dir() and len(output.strip()) > 0",
+        "hints": [
+          "Create a variable like this: city = \"Baghdad\"",
+          "You can combine text and variables: print(\"I live in \" + city + \", \" + country)"
+        ]
+      },
+      "checkUnderstanding": "Ask: If you write city = \"Erbil\" after city = \"Baghdad\", what would print(city) show? Why?"
+    },
+    {
+      "step": 3,
+      "title": "Data types — not everything is text",
+      "objective": "Student can identify and use strings, integers, floats, and booleans",
+      "teach": "Explain that Python has different types of data: text (strings), whole numbers (integers), decimal numbers (floats), and true/false values (booleans). Use the analogy of different kinds of boxes. Show type() function.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Create four variables: name (a string), age (an integer), height (a float like 1.75), and is_student (a boolean). Print each one along with its type using type().",
+        "language": "python",
+        "test": "assert isinstance(name, str) and isinstance(age, int) and isinstance(height, float) and isinstance(is_student, bool)",
+        "hints": [
+          "Strings use quotes: name = \"Ali\"",
+          "Integers are whole numbers: age = 25",
+          "Floats have decimals: height = 1.75",
+          "Booleans are True or False (capital T and F): is_student = True"
+        ]
+      },
+      "checkUnderstanding": "Ask: What's the difference between age = 25 and age = \"25\"? When would it matter?"
+    },
+    {
+      "step": 4,
+      "title": "Arithmetic — doing math with Python",
+      "objective": "Student can perform basic arithmetic and understand operator precedence",
+      "teach": "Show the basic operators: +, -, *, /, // (integer division), % (modulo), ** (power). Explain that Python follows math order of operations. Show practical examples like calculating total price, splitting a bill, etc.",
+      "exercise": {
+        "type": "code",
+        "prompt": "A restaurant bill is 45,000 IQD. There are 3 friends splitting the bill equally, and they want to add a 10% tip. Calculate and print: the tip amount, the total with tip, and how much each person pays.",
+        "language": "python",
+        "test": "assert 'bill' in __code__ or '45000' in __code__",
+        "hints": [
+          "Start with: bill = 45000",
+          "Tip: tip = bill * 0.10",
+          "Total: total = bill + tip",
+          "Per person: per_person = total / 3"
+        ]
+      },
+      "checkUnderstanding": "Ask: What's the difference between / and // in Python? Give me an example where they'd give different results."
+    },
+    {
+      "step": 5,
+      "title": "User input — making programs interactive",
+      "objective": "Student can use input() to get data from the user and convert types",
+      "teach": "Explain input() as a way to ask the user for information. Show that input() always returns a string, so you need int() or float() to convert to numbers. Demonstrate a simple interactive program.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Write a program that asks for the user's name and birth year, then calculates and prints their age. Use input() for both. (Hint: you'll need to convert the birth year to an integer.)",
+        "language": "python",
+        "test": "assert 'input' in __code__ and 'int' in __code__",
+        "hints": [
+          "Get name: name = input(\"What is your name? \")",
+          "Get year: birth_year = int(input(\"What year were you born? \"))",
+          "Calculate: age = 2026 - birth_year"
+        ]
+      },
+      "checkUnderstanding": "Ask: What would happen if the user typed 'abc' when you ask for their birth year? How could you handle that?"
+    },
+    {
+      "step": 6,
+      "title": "Making decisions with if/else",
+      "objective": "Student can write if/elif/else statements to control program flow",
+      "teach": "Explain conditional logic as the computer making decisions. Use a real-world analogy: If it's hot outside, wear a t-shirt. Elif it's cold, wear a jacket. Else, wear a hoodie. Show the syntax with indentation. Explain that indentation is how Python knows what belongs inside the if block.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Write a program that has a variable called 'temperature' set to any number. If it's above 35, print 'It is hot!'. If it's between 20 and 35, print 'Nice weather!'. If it's below 20, print 'It is cold!'.",
+        "language": "python",
+        "test": "assert 'if' in __code__ and 'temperature' in dir() and len(output.strip()) > 0",
+        "hints": [
+          "Start with: temperature = 30",
+          "Use if, elif, else with colons at the end",
+          "Remember to indent with 4 spaces"
+        ]
+      },
+      "checkUnderstanding": "Ask: What would happen if you wrote the conditions in a different order — checking for cold first, then hot? Would it still work the same way?"
+    },
+    {
+      "step": 7,
+      "title": "Comparison and logical operators",
+      "objective": "Student can use ==, !=, <, >, <=, >=, and, or, not",
+      "teach": "Explain comparison operators as questions you ask Python (is this equal to that? is this bigger?). Then introduce logical operators: 'and' means both must be true, 'or' means at least one must be true, 'not' flips the answer. Show practical examples combining comparisons.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Write a ticket eligibility checker. Create variables for age and has_id (boolean). Print 'Eligible' if the person is 18 or older AND has an ID. Print 'Too young' if under 18. Print 'Need ID' if old enough but no ID.",
+        "language": "python",
+        "test": "assert 'and' in __code__ or 'or' in __code__",
+        "hints": [
+          "Start with: age = 20 and has_id = True",
+          "Combine conditions: if age >= 18 and has_id:",
+          "Use elif for the other cases"
+        ]
+      },
+      "checkUnderstanding": "Ask: What's the difference between = and ==? Why does Python need both?"
+    },
+    {
+      "step": 8,
+      "title": "Lists — storing collections of things",
+      "objective": "Student can create lists, access items by index, and modify lists",
+      "teach": "Explain lists as an ordered collection of items, like a shopping list. Show how to create a list, access items by index (starting from 0), add items with append(), remove items, and check the length with len(). Emphasize that indexing starts at 0.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Create a list of 4 Iraqi cities. Print the first and last city. Add a 5th city using append(). Remove the 2nd city. Print the final list and its length.",
+        "language": "python",
+        "test": "assert isinstance(cities, list) if 'cities' in dir() else True",
+        "hints": [
+          "Create: cities = [\"Baghdad\", \"Basra\", \"Erbil\", \"Najaf\"]",
+          "First item: cities[0], Last item: cities[-1]",
+          "Add: cities.append(\"Mosul\")",
+          "Remove by index: cities.pop(1) or by value: cities.remove(\"Basra\")"
+        ]
+      },
+      "checkUnderstanding": "Ask: If a list has 5 items, what's the index of the last item? Why does Python start counting from 0 instead of 1?"
+    },
+    {
+      "step": 9,
+      "title": "For loops — doing things repeatedly",
+      "objective": "Student can use for loops to iterate over a range and a list",
+      "teach": "Explain loops as telling the computer to repeat something. Use the analogy of a teacher calling attendance — you go through the list one name at a time. Show for loop with range() first (counting), then with a list of items. Emphasize the pattern: for [item] in [collection].",
+      "exercise": {
+        "type": "code",
+        "prompt": "Create a list of 3 of your favorite foods. Then write a for loop that prints each food with a number, like:\n1. Kebab\n2. Dolma\n3. Biryani",
+        "language": "python",
+        "test": "assert 'for' in __code__ and len(output.strip().split('\\n')) >= 3",
+        "hints": [
+          "Create a list: foods = [\"Kebab\", \"Dolma\", \"Biryani\"]",
+          "Use enumerate to get numbers: for i, food in enumerate(foods, 1):",
+          "Print with: print(f\"{i}. {food}\")"
+        ]
+      },
+      "checkUnderstanding": "Ask: If you had a list of 1000 foods, how many lines of code would your loop be? What's the advantage of using a loop instead of writing 1000 print statements?"
+    },
+    {
+      "step": 10,
+      "title": "While loops — repeating until a condition is met",
+      "objective": "Student can use while loops and understands the risk of infinite loops",
+      "teach": "Explain while loops as 'keep doing this as long as the condition is true.' Compare with for loops: for is 'do this N times,' while is 'keep going until something changes.' Warn about infinite loops. Show the break keyword as an emergency exit.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Write a countdown program that starts at 10 and counts down to 1, printing each number. After the countdown, print 'Liftoff!'. Use a while loop.",
+        "language": "python",
+        "test": "assert 'while' in __code__ and 'Liftoff' in output",
+        "hints": [
+          "Start with: count = 10",
+          "Loop: while count > 0:",
+          "Don't forget to decrease: count -= 1 (or you'll get an infinite loop!)"
+        ]
+      },
+      "checkUnderstanding": "Ask: What would happen if you forgot the line count -= 1 inside your while loop? How would you stop it?"
+    },
+    {
+      "step": 11,
+      "title": "Functions — reusable blocks of code",
+      "objective": "Student can define functions with parameters and return values",
+      "teach": "Explain functions as recipes — you define them once, then use them whenever you need. Show the def keyword, parameters as ingredients, and return as the finished dish. Start with a simple function, then show one with parameters and return.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Write a function called calculate_ticket_price that takes two parameters: base_price and quantity. It should return the total price with a 5% discount if quantity is 3 or more. Test it by printing the result for 2 tickets at 25000 IQD and 4 tickets at 25000 IQD.",
+        "language": "python",
+        "test": "assert callable(calculate_ticket_price) if 'calculate_ticket_price' in dir() else True",
+        "hints": [
+          "Define: def calculate_ticket_price(base_price, quantity):",
+          "Calculate total: total = base_price * quantity",
+          "Apply discount: if quantity >= 3: total = total * 0.95",
+          "Return: return total"
+        ]
+      },
+      "checkUnderstanding": "Ask: What's the difference between print() and return in a function? When would you use one vs. the other?"
+    },
+    {
+      "step": 12,
+      "title": "String methods — manipulating text",
+      "objective": "Student can use common string methods: upper, lower, strip, split, replace, f-strings",
+      "teach": "Show that strings have built-in methods you can call with a dot. Cover the most useful ones: .upper(), .lower(), .strip(), .split(), .replace(), .startswith(), .endswith(). Then introduce f-strings as the modern way to combine variables with text.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Take the string '  Hello, World!  '. Strip the whitespace, convert to lowercase, replace 'world' with your name, and print the result using an f-string that also includes the length of the final string.",
+        "language": "python",
+        "test": "assert 'strip' in __code__ or 'lower' in __code__ or 'replace' in __code__",
+        "hints": [
+          "Start: text = '  Hello, World!  '",
+          "Chain methods: text = text.strip().lower()",
+          "Replace: text = text.replace('world', 'amr')",
+          "f-string: print(f\"Result: {text} (length: {len(text)})\")"
+        ]
+      },
+      "checkUnderstanding": "Ask: When you call text.upper(), does it change the original text variable, or does it create a new string? How would you test this?"
+    },
+    {
+      "step": 13,
+      "title": "Dictionaries — storing key-value pairs",
+      "objective": "Student can create, access, modify, and iterate over dictionaries",
+      "teach": "Explain dictionaries as a real dictionary analogy — you look up a word (key) to find its definition (value). Show creating a dict, accessing values by key, adding/updating pairs, and looping over keys and values. Compare with lists: lists use numeric indexes, dicts use custom keys.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Create a dictionary representing an event ticket with keys: event_name, venue, price, and is_vip. Print each key-value pair in a readable format. Then add a new key 'seat_number' and update the price to be 10% higher.",
+        "language": "python",
+        "test": "assert isinstance(ticket, dict) if 'ticket' in dir() else True",
+        "hints": [
+          "Create: ticket = {\"event_name\": \"Rock Concert\", \"venue\": \"Baghdad Stadium\", \"price\": 50000, \"is_vip\": False}",
+          "Loop: for key, value in ticket.items():",
+          "Add: ticket[\"seat_number\"] = \"A12\"",
+          "Update: ticket[\"price\"] = ticket[\"price\"] * 1.10"
+        ]
+      },
+      "checkUnderstanding": "Ask: What happens if you try to access a key that doesn't exist in a dictionary? How is .get() different from using square brackets?"
+    },
+    {
+      "step": 14,
+      "title": "Error handling with try/except",
+      "objective": "Student can handle common errors gracefully instead of crashing",
+      "teach": "Explain that errors are normal and expected. Show what happens when code crashes (traceback). Introduce try/except as a safety net. Cover common error types: ValueError, TypeError, KeyError, IndexError. Show how to catch specific errors and provide helpful messages.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Write a program that asks the user for a number and divides 100 by it. Handle three cases: (1) the user types something that's not a number (ValueError), (2) the user types 0 (ZeroDivisionError), (3) it works correctly. Print a helpful message for each case.",
+        "language": "python",
+        "test": "assert 'try' in __code__ and 'except' in __code__",
+        "hints": [
+          "Wrap in try: try:",
+          "Get input: num = int(input(\"Enter a number: \"))",
+          "Divide: result = 100 / num",
+          "Catch: except ValueError: print(\"That's not a number!\")",
+          "Catch: except ZeroDivisionError: print(\"Can't divide by zero!\")"
+        ]
+      },
+      "checkUnderstanding": "Ask: Why is it better to catch specific error types (like ValueError) instead of catching all errors with a bare 'except'?"
+    },
+    {
+      "step": 15,
+      "title": "Putting it all together — build a mini project",
+      "objective": "Student can combine all learned concepts into a working program",
+      "teach": "This is the final step! Walk the student through building a small project that combines variables, input, conditionals, loops, functions, lists, and dictionaries. Guide them step by step but let them write the code. The project: a simple ticket booking system.",
+      "exercise": {
+        "type": "code",
+        "prompt": "Build a mini ticket booking system:\n1. Create a list of 3 events (each event is a dictionary with name, price, and available_seats)\n2. Write a function show_events() that prints all events with their details\n3. Write a function book_ticket(events, event_name) that reduces available seats by 1 and returns the price (or an error message if sold out)\n4. Show the events, let the user pick one, book it, and show the updated events list",
+        "language": "python",
+        "test": "assert 'def' in __code__ and 'for' in __code__",
+        "hints": [
+          "events = [{\"name\": \"Rock Concert\", \"price\": 50000, \"available_seats\": 100}, ...]",
+          "def show_events(events): for i, event in enumerate(events, 1): ...",
+          "def book_ticket(events, event_name): find the event, check seats, update",
+          "Use try/except around the booking for error handling"
+        ]
+      },
+      "checkUnderstanding": "Ask: Now that you've built this, what would you add next to make it more useful? Think about real-world features a ticketing system would need."
+    }
+  ]
+}
