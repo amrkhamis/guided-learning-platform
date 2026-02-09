@@ -1,5 +1,7 @@
 # Guided Learning
 
+**[Live Demo](https://guided-learning.netlify.app/)**
+
 An AI-powered learning platform where users can learn any topic through an interactive, step-by-step experience guided by an AI tutor.
 
 ## How it works
@@ -75,9 +77,13 @@ When a user enters a topic:
 4. The AI tutor teaches each step conversationally — explaining, exercising, checking understanding
 5. Progress is saved automatically and visible in the learning library on the homepage
 
-## Deploying to Vercel
+## Deployment
+
+The app is deployed on **Netlify**: [guided-learning.netlify.app](https://guided-learning.netlify.app/)
+
+To deploy your own instance:
 
 1. Push the repo to GitHub
-2. Import in Vercel
+2. Import in [Netlify](https://app.netlify.com) (auto-detects Next.js)
 3. Add `OPENROUTER_API_KEY` as an environment variable
-4. Deploy
+4. Deploy — Netlify handles SSR, API routes, and caching automatically
