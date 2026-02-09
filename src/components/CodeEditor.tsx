@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
@@ -22,6 +22,14 @@ export function CodeEditor({ language, onSubmit, hints }: CodeEditorProps) {
   const [code, setCode] = useState(getStarterCode(language));
   const [showHints, setShowHints] = useState(false);
   const [currentHint, setCurrentHint] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   function handleSubmit() {
     if (code.trim()) {
@@ -78,25 +86,36 @@ export function CodeEditor({ language, onSubmit, hints }: CodeEditorProps) {
         </div>
       )}
 
-      {/* Monaco Editor */}
-      <div className="flex-1">
-        <MonacoEditor
-          height="100%"
-          language={language}
-          value={code}
-          onChange={(value) => setCode(value || "")}
-          theme="vs-dark"
-          options={{
-            minimap: { enabled: false },
-            fontSize: 14,
-            lineNumbers: "on",
-            scrollBeyondLastLine: false,
-            wordWrap: "on",
-            tabSize: 4,
-            padding: { top: 16 },
-            automaticLayout: true,
-          }}
-        />
+      {/* Editor: Monaco on desktop, textarea on mobile */}
+      <div className="flex-1 min-h-0">
+        {isMobile ? (
+          <textarea
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            className="w-full h-full bg-[#1e1e1e] text-[var(--foreground)] p-4 text-sm font-mono resize-none focus:outline-none"
+            spellCheck={false}
+            autoCapitalize="off"
+            autoCorrect="off"
+          />
+        ) : (
+          <MonacoEditor
+            height="100%"
+            language={language}
+            value={code}
+            onChange={(value) => setCode(value || "")}
+            theme="vs-dark"
+            options={{
+              minimap: { enabled: false },
+              fontSize: 14,
+              lineNumbers: "on",
+              scrollBeyondLastLine: false,
+              wordWrap: "on",
+              tabSize: 4,
+              padding: { top: 16 },
+              automaticLayout: true,
+            }}
+          />
+        )}
       </div>
 
       {/* Submit bar */}
