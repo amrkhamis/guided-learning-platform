@@ -1,48 +1,29 @@
-export interface CourseExercise {
-  type: "code" | "question";
-  prompt: string;
-  language?: string;
-  test?: string;
-  hints?: string[];
-}
-
-export interface CourseStep {
+export interface PathStep {
   step: number;
   title: string;
   objective: string;
-  teach: string;
-  exercise: CourseExercise;
-  checkUnderstanding: string;
+  hasExercise: boolean;
+  exerciseType: "code" | "question" | "creative";
 }
 
-export interface Course {
+export interface LearningPath {
   id: string;
-  title: string;
+  topic: string;
   description: string;
-  difficulty: string;
-  language: string;
+  steps: PathStep[];
   estimatedMinutes: number;
-  systemPrompt: string;
-  steps: CourseStep[];
+  includesCode: boolean;
+  codeLanguage?: string;
+  createdAt: string;
 }
 
-export interface Message {
+export interface LearningSession {
   id: string;
-  role: "user" | "assistant";
-  content: string;
-}
-
-export interface StepProgress {
-  stepNumber: number;
-  completed: boolean;
-  codeSubmitted?: string;
-  attempts: number;
-}
-
-export interface CourseProgress {
-  courseId: string;
+  learningPath: LearningPath;
   currentStep: number;
-  steps: StepProgress[];
+  completedSteps: number[];
+  currentAttempt: number;
   startedAt: string;
+  lastAccessedAt: string;
   completedAt?: string;
 }

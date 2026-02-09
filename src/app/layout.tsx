@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Guided Learning Platform",
+  title: "Guided Learning",
   description:
-    "Learn technical skills through interactive, AI-driven guided courses",
+    "Learn anything with a personalized AI tutor that guides you step by step",
 };
 
 export default function RootLayout({
